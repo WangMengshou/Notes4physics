@@ -3,7 +3,8 @@ import mathjax3 from 'markdown-it-mathjax3'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/Notes4physics/',
+  // 本地开发时使用根路径，生产环境构建时使用 /Notes4physics/
+  base: process.env.NODE_ENV === 'production' ? '/Notes4physics/' : '/',
   title: "我的读书笔记",
   description: "记录阅读的点点滴滴",
   markdown: {
