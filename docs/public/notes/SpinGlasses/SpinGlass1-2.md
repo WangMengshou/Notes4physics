@@ -13,7 +13,7 @@
 }
 </style>
 
-Note for *Statistical Physics of Spin Glasses and Information Processing: An Introduction - Nishimori - 2001*
+Notes for *Statistical Physics of Spin Glasses and Information Processing: An Introduction - Nishimori - 2001*
 
 # Chapter 1: Mean-field theory of phase transitions
 本章介绍mean-field theory 在传统的ferromagnetic Ising model中的应用，为后续spin glasses 的讨论做准备。
@@ -305,8 +305,8 @@ $$
 所以
 $$
 \begin{aligned}
-[Z^n] =\exp\left(\frac{\beta^2 J^2nN}{4}\right)  &\int_{-\infty}^{\infty}\left(\prod_{\alpha<\beta}\text{d}q_{\alpha\beta}\right)\left(\prod_{\alpha}\text{d}m_{\alpha}\right)\\
-&\exp\left(-\frac{N\beta^2 J^2 }{2}\sum_{\alpha<\beta}q_{\alpha\beta}^2-\frac{N\beta J_0 }{2}\sum_{\alpha}m_{\alpha}^2 + N\log \text{Tr} \text{ e}^L\right),\\
+[Z^n] =&\exp\left(\frac{\beta^2 J^2nN}{4}\right) \int_{-\infty}^{\infty}\left(\prod_{\alpha<\beta}\text{d}q_{\alpha\beta}\right)\left(\prod_{\alpha}\text{d}m_{\alpha}\right)\\
+&\exp\left(-\frac{N\beta^2 J^2 }{2}\sum_{\alpha<\beta}q_{\alpha\beta}^2-\frac{N\beta J_0 }{2}\sum_{\alpha}m_{\alpha}^2 + N\log \text{Tr} \text{ e}^L\right),\tag{PF-Zn}\\
 \end{aligned}   
 $$
 ### Steepest descent method
@@ -384,7 +384,7 @@ $$q_{\alpha\beta} =\left[\frac{\text{Tr} S_i^{\alpha}\text{ e}^{-\beta H_{\alpha
 - 在 **paramagnetic phase at high temperature**, 在任意的replica, 每个site $i$, 有$\langle S_i \rangle=0$, 因此$m=q=0$.
 - 在 **ferromagnetic phase**, 具有几乎空间均匀的序，若选择序的方向为正项，则在大多数site有$\langle S_i \rangle>0$, 因此 $m>0$ 和 $q>0$.
 - 在 **spin glass phase at low temperature**, spin在空间上随机分布，但时间上冻结，因此在每个site $i$, 有$\langle S_i \rangle\neq 0$, 但其符号随机分布，因此有可能$m=[\langle S_i \rangle]=0$, 但$q=[\langle S_i \rangle^2]>0$. 因此$q$可以作为spin glass phase 的order parameter.
-## Replica-symmetric solution
+## Sec. 3:  Replica-symmetric solution
 ### Equation of state
 为了求解(R-FE), 且$q_{\alpha\beta}$和$m_{\alpha}$的值，有saddle-point conditions (Saddle-q)和(Saddle-m). 在此式子中，replica index 是需要被明确处理的。但直观上，系统的物理性质不应依赖于replica index 的标号，因此假设**replica symmetry**,
 $$q_{\alpha\beta} = q, \quad (\alpha\neq\beta),\qquad m_{\alpha} = m.$$
@@ -539,6 +539,3 @@ $$
 </details>
 
 最初，怀疑这种 negative entropy 是在推导(R-FE)时错误的计算了$n \to 0$和$N\to \infty$的极限顺序。正确顺序是先取$n\to 0$，再取$N\to \infty$，事实上为了使用steepest descent method，先取了$N\to \infty$。 但事实证明replica symmetry 的假设才是导致negative entropy 的根本原因。下一章节将介绍replica symmetry breaking 的方法，进而修正这个问题。
-
-<!-- # Chapter 3: Replica Symmetry Breaking -->
-
