@@ -466,7 +466,8 @@ $$
 
 
 </details>
-这里的equation of state 也可通过(saddle-q)和(saddle-m)与$L$的定义结合replica symmetry 假设直接得到。
+
+这里的equation of state 也可通过(saddle-q)和(saddle-m)与 $L$ 的定义结合replica symmetry 假设直接得到。
 
 式子(RS-m)相比较只有外场的时的$m=\tanh \beta h$, 由于随机性 internal field具有Gaussian分布。
 
