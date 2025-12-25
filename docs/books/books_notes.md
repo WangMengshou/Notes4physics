@@ -5,6 +5,7 @@
 - **Statistical Physics of Spin Glasses and Information Processing: An Introduction**{target="_blank"}, *Nishimori* -2001.
     - [Chpter1&2](../notes/SpinGlasses/SpinGlass1-2.html){target="_blank"};
     - [Chpter3](../notes/SpinGlasses/SpinGlass3.html){target="_blank"};
+    - [Chpter4](../notes/SpinGlasses/SpinGlass4.html){target="_blank"};
     
 
 ## 待读清单
