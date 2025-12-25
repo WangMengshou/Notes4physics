@@ -554,3 +554,218 @@ Parisi type RSB solution 最初是为了解决replica symmetric solution 中的�
 ### Multivalley structure
 在ferromagnet的free energy 与系统state 之间有简单的结构如图FIG.3.3(a)所示。 然而spin glass 的free energy landscape 则复杂得多，如图FIG.3.3(b)所示,存在很多个极小值，且极小值之间的barriers随系统的size增加而增加。如果接受这种physical picture, 便可以对RSB有更清晰的解释。
 <img src="./image3-3.png" width="70%" height="70%">
+
+假设系统size是大的但不是无穷，那么系统会在某一free energy 的极小值附近的valley陷留相当长时间。 然而经过足够长时间，系统会克服barrier，跳跃到另一个极小值附近，从而遍历所有valley。因此在有限时间尺度下，系统的物理性质由一某一个valley 决定;但在极长时间后，观测到的行为将反应所有的valley的性质。后一种情形正是传统平衡统计力学的表述中所假设的情况。
+
+现在我们对free energy valley 用索引 $a$，将系统限制在特定的valley,那么该valley的magnetization, 记$m_{i}^a = \langle S_i \rangle_a$, 这类似于ferromagnet中仅考虑$m>0$的情况。
+
+### $q_{EA}$ and $\overline{q}$
+
+为了理解单个valley 的spin ordering,必须取热力学极限$N\to \infty$，通过无限提升barrier,将目标valley 与其他valleys隔离开来，因此可以忽略valleys 之间的transitions。因此单个valley的order parameter (Edwards-Anderson order parameter)定义为
+$$
+q_{EA} = \lim_{t\to \infty}\lim_{N\to \infty} [\langle S_i(t_0)S_i(t_0+t) \rangle].
+$$
+该物理量用于衡量长时间后，site $i$ 上的spin state与初始时间$t_0$的相似性(or overlap)。该物理量的实际意义表明其等于average of the square of local magnetization $(m_i^a)^2$:
+$$
+q_{EA} = \left[\sum_{a}P_a(m_i^a)^2\right] = \left[\sum_{a}P_a\frac1N\sum_{i}(m_i^a)^2\right].
+$$
+其中$P_a$是valley $a$的权重(probability weight)，$P_a=\text{e}^{-\beta F_a}/Z$. 在第二个等式中，假设了average squared local magnetization 在不同site 上是相同的。
+
+我们也引入另一个oder parameter $\overline{q}$，它表示长时间观测下对不同valleys的平均。这个序参量定义为
+$$
+\overline{q} = \left[\left(\sum_{a}P_a m_i^a\right)\right] = \left[\sum_{ab}P_a P_b m_i^a m_i^b\right] = \left[\sum_{ab}P_a P_b \frac1N\sum_{i}m_i^a m_i^b\right].
+$$
+如果这里重写$m_i = \sum_a P_a m_i^a$,那么
+$$
+\overline{q} = [m_i^2] = [\langle S_i \rangle^2].
+$$
+上式表明$\overline{q}$衡量的是不同valleys 之间的average with overlap, 对长时间间的transition而言是个合适的量。
+
+如果仅存在单一valley,那么显然有$q_{EA} = \overline{q}$. 但一般而言，存在多个valleys,因此$q_{EA} > \overline{q}$. 这两个序参量之差$$\Delta q = q_{EA} - \overline{q} \ge 0$$可用于衡量 the existence of a multivalley structure. 通常预期在$q_{EA}$和$\overline{q}$存在continuous spectrum of order parameters 对应不同valleys之间的transitions程度。 这将对应 Parisi RSB solution 中的continuous function $q(x)$。
+
+### Distribution of overlaps
+两个不同valleys $a$和$b$之间的overlap 定义为
+$$
+q_{ab} = \frac1N \sum_{i} m_i^a m_i^b.
+$$
+当两个valleys 相同时取最大值，当两个valleys 完全不相关时取最小值。 让我们对于给定random interaction $J$，定义overlap $q_{ab}$ 的distribution as 
+$$
+P_J(q) = \sum_{ab} P_a P_b \delta(q - q_{ab}).
+$$
+并且定义其configurational average 为
+$$
+P(q) = [P_J(q)].
+$$
+在一个像ferromagnetic 的 simple system 中， 仅存在两个通过overall spin reversal 相连的 valleys, 并且$q_{ab}$仅仅假设$\pm m^2$. 
+<img src="./image3-4.png" width="50%" height="50%">
+正如图FIG.3.4所示，$P(q)$在$q=\pm m^2$处有两个delta function peaks。若存在连续不同态的 multivalley strusture, 那么$q_{ab}$将呈现不同的取值，且$P(q)$会在某一区间内连续分布，如图FIG.3.5所示。
+
+### Replica representation of the order parameter
+在此节中，将探讨RSB和distribution function $P(q)$的连续部分之间的联系。 在replica formalism 中，量$q_{\alpha\beta}$是replicas $\alpha$和$\beta$之间的overlap，$$q_{\alpha\beta} = \langle S_i^{\alpha} S_i^{\beta}\rangle.$$
+在RSB中，对于不同的pair $(\alpha,\beta)$, $q_{\alpha\beta}$可以取不同的值。 对于statistical-mechanical average of $q_{\alpha\beta}$, 有
+$$
+\overline{q} = \lim_{n \to 0}\frac{1}{n(n-1)}\sum_{\alpha\neq\beta} q_{\alpha\beta}.
+$$
+这与前面定义的$\overline{q}$是一致的。另一方面，single valley 的 spin glass order parameter并不反应valleys之间的差异，因此应该当大于order parameter 任何其他的取值。可以将$q_{EA}$表示replica method中$q_{\alpha\beta}$的最大值:
+$$
+q_{EA} = \max_{\alpha\beta} q_{\alpha\beta} = \max_{x} q(x).
+$$
+让我们定义accumulated distribution of $P(q)$:
+$$
+x(q) = \int_{0}^{q} \text{ d}q' P(q'),\quad \text{ thus }\quad P(q) = \frac{\text{d}x(q)}{\text{d}q}.
+$$
+使用这个定义，因此对于statistical-mechanical average是所有可能$q$值的平均，
+$$
+\overline{q} = \int \text{ d}q' \ P(q') q = \int_0^1 \text{ d}x \ q(x).
+$$
+所以parameters $q_{EA}$ and $\overline{q}$ 都能被Parisi RSB solution 中的$q(x)$所描述。 如果有很多个valleys, $q_{\alpha\beta}$有不同的取值，$P(q)$不能被表达成简单的delta function peaks。在此情况下$q(x)$具有非平凡的结构，对应Parisi type RSB solution。因此3.3.2节中spin glass phase 空间的multivalley structure。
+
+### Ultrametricity
+Parisi RSB solution 具有 ultrametric. 对于三个不同的状态distribution function 的 configurational average 定义为 
+$$
+P(q_{1},q_{2},q_{3}) = \left[\sum_{abc} P_a P_b P_c \delta(q_{1}-q_{ab})\delta(q_{2}-q_{bc})\delta(q_{3}-q_{ca})\right].
+$$
+并且能用RSB method 评价为
+$$
+[P(q_{1},q_{2},q_{3})] = \frac12 P(q_1)x(q_1)\delta(q_1 - q_2)\delta(q_2 - q_3) + \frac12 \{P(q_1)P(q_2)\theta(q_1 - q_2)\delta(q_2 - q_3) + (\text{ two terms with 1,2,3 permuted})\}.
+$$
+在此$x(q)$与前面定义相同，且$\theta(x)$是Heaviside step function, $=1,x>0$ or $=0,x<0$。如果三个overlaps $q_1,q_2,q_3$均相等时，首项才非零，或者有两项相等时$(q_1>q_2,q_2=q_3)$，第二项才非零。 这意味着三个状态之间的距离应该构成等边三角形或等腰三角形，可以解释为状态空间具有树形结构如图FIG.3.5所示。满足此条件的三点距离度量空间被称为ultrametric space。
+<img src="./image3-5.png" width="70%" height="70%">
+
+## Sec. 5: TAP equations
+关于spin glass 的不同观点由Thouless, Anderson and Palmer (TAP) 提出的equation of state 提供，该方程涉及spin glass 中的local magnetization。
+### TAP equation
+对于给定的random interaction $J$, SK model 的 local magnetization满足TAP equation:
+$$
+m_i = \tanh\left[\beta\left(\sum_{j} J_{ij} m_j + h_i - \beta \sum_{j} J_{ij}^2 (1-m_j^2)m_i \right)\right].
+$$
+首先第一项表示usual internal field。第三项被称为Onsager reaction term, 并且它添加了 remove the effect of self-response. magnetization $m_i$ 通过 internal field $J_ij m_i$ 影响 site $j$ 的spin, 改变了site $j$ 的 magnetization $\Xi_{jj}J_{ij}m_i.$ 这里
+$\Xi_{jj} = \partial m_j/\partial h_j = \beta (1-m_j^2)$ 是site $j$ 的local susceptibility. 那么 internal field 在 site $i$ 会有增量
+$$
+J_{ij}\Xi_{jj}J_{ij}m_i = \beta J_{ij}^2 (1-m_j^2)m_i.
+$$
+由于site $i$ 不应该响应它自己产生的field，因此需要从internal field 中减去该项，这就是Onsager reaction term 的物理意义。 在infinite-range interactions, 这个interaction scales as $J_{ij} = J/N$, 因此第三项忽略不计因为其是$\mathcal{O}(1/N)$. 在SK model 中，$J_{ij}^2 = \mathcal{O}(1/N)$所以第三项和前两项同阶不应该忽略。 TAP equation 为处理spin glass 问题提供了基础，且无需对$J$的分布进行构型平均。
+
+TAP equation 可以对下面free energy,
+$$
+\begin{aligned}
+\beta f_{TAP} =& -\frac12\sum_{i\neq j} J_{ij} m_i m_j - \sum_i h_i m_i - \frac{\beta}{4}\sum_{i \neq j} J_{ij}^2(1-m_i^2)(1-m_j^2)\\
+&+ T \sum_{i}\left\{\frac{1+m_i}{2}\log\frac{1+m_i}{2} + \frac{1-m_i}{2}\log\frac{1-m_i}{2}\right\},
+\end{aligned}
+$$
+取极值条件得到。 该free energy前两项表示internal energy, 第三项是reaction term, 最后一项是entropy.
+
+对于上面的free energy 如何得到，可以通过对magnetization 的 expansion of free energy 来得到。
+$$
+-\beta \tilde{f}(\alpha,\beta,\textbf{m}) = \log \text{Tr } \exp\left[\beta H(\alpha)\right] - \beta \sum_i h_i m_i,
+$$
+其中 $H(\alpha) = \alpha H_0 - \sum_i h_i S_i$ 和 $\mathbf{m} = \{m_i\}$. 这里的$H_0$是SK Hamiltonian:
+$$
+H_0 = -\sum_{i<j} J_{ij} S_i S_j.
+$$
+并且$h_i(\alpha,\beta,\mathbf{m})$是Lagrange multiplier, 使得$m_i = \langle S_i \rangle_{\alpha}$, 其中$\langle \cdot \rangle_{\alpha}$表示在Hamiltonian $H(\alpha)$下的热力学平均。 对$\tilde{f}$在$\alpha = 0$处展开二阶，然后取$\alpha = 1$，得到TAP free energy。这被称为Plefka expansion。
+
+我们对其微分得到
+$$
+\begin{aligned}
+\frac{\partial (\tilde{f})}{\partial \alpha} &= \langle H_0 \rangle_{\alpha}  \\
+\frac{\partial^2 (\tilde{f})}{\partial \alpha^2} &= -\beta \left\langle H_0\left(H_0 - \langle H_0 \rangle_{\alpha} - \sum_i \frac{\partial h_i}{\partial \alpha} ( S_i - m_i) \right)\right\rangle_{\alpha}
+\end{aligned}
+$$
+在$\alpha = 0$处，有
+$$
+\begin{aligned}
+\tilde{f}\Big|_{\alpha=0}&= T\sum_i \left\{\frac{1+m_i}{2}\log\frac{1+m_i}{2} + \frac{1-m_i}{2}\log\frac{1-m_i}{2}\right\},\\
+\frac{\partial \tilde{f}}{\partial \alpha}\Big|_{\alpha=0} &= -\frac12 \sum_{i\neq j} J_{ij} m_i m_j,\\
+\frac{\partial^2 \tilde{f}}{\partial \alpha^2}\Big|_{\alpha=0} &= -\frac12\beta \sum_{i\neq j} J_{ij}^2 (1-m_i^2)(1-m_j^2).
+\end{aligned} 
+$$
+二阶项提供了Onsager reaction term。所以有$f_{TAP} = \tilde{f}(0) + \tilde{f}'(0) + \frac12 \tilde{f}''(0)$. 同样地可以证明，上述展开式在$\alpha\ge 1$时的收敛条件等价于free energy 的稳定性条件也即Hessian $\{\partial^2 f_{TAP} / \partial m_i \partial m_j\}$是non-negative definite。只要满足稳定性条件，展开式中所有高阶项在thermodynamic limit 下均为零。
+
+### Cavity method 
+
+让我们考虑local magnetization $m_i = \langle S_i \rangle$,其中thermal average 在 single valley 内进行。 这个目标是展示local magnetization 满足TAP equation。 首先考虑推导distribution function of local spin $P_i(S_i)$, 然后根据此进行上述的thermal average。在此考虑无外场的情形$h_i=0$。 那么local magnetization 被local field $\tilde{h}_i = \sum_{j} J_{ij} S_j$ 所决定. 所以$S_i$和$\tilde{h}_i$的joint distribution 能被写为
+$$
+P(S_i, \tilde{h}_i) \propto \text{e}^{\beta S_i \tilde{h}_i} P_i(\tilde{h}_i \backslash S_i). 
+$$
+其中 $P_i(\tilde{h}_i \backslash S_i)$ 是在移除site $i$ 后local field $\tilde{h}_i$ 的distribution. More explicitly,
+$$
+P_i(\tilde{h}_i \backslash S_i) = \text{Tr }_{\mathbf{S}\backslash S_i} \delta\left(\tilde{h}_i - \sum_{j} J_{ij} S_j\right) P(\mathbf{S}\backslash S_i),
+$$
+其中$P(\mathbf{S}\backslash S_i)$表示除去site $i$的所有spins的joint distribution. The distribution
+$$
+P_i(S_i)\propto \int \text{ d}\tilde{h}_i \ \text{e}^{\beta S_i \tilde{h}_i} P_i(\tilde{h}_i \backslash S_i).
+$$
+因此$P(\tilde{h}_i \backslash S_i)$可以由此再得到。
+
+在SK model 中，相互作用范围是不被限制的，求和$\sum_{j} J_{ij} S_j$ 中有$N-1$项。若所有这些项目都独立同分布，则central limit theorem 适用，因此确保$\tilde{h}_i$ 是 Gaussian distributed. 这在图FIG.3.6中所示，Bethe lattice 中当移除一个site时，该结构会分解为相互独立的子树。让我们对于SK model ，不同sites 之间的correlations是弱的。我们有
+$$
+P_i(\tilde{h}_i \backslash S_i) = \frac{1}{\sqrt{2\pi V_i^2}} \exp\left[-\frac{(\tilde{h}_i - \langle \tilde{h}_i \rangle_{\backslash i})^2}{2V_i^2}\right],
+$$
+结合上面$P_i(S_i)$的表达式，可以得到
+$$
+m_i = \tanh \beta \langle \tilde{h}_i \rangle_{\backslash i} $$
+因此下面分析$\langle \tilde{h}_i \rangle_{\backslash i}$，
+首先对于standard average of the local field (without the cavity),
+$$
+\langle \tilde{h}_i \rangle = \text{Tr }_{S_i} \int \text{ d}\tilde{h}_i \ \tilde{h}_i P(S_i, \tilde{h}_i)
+$$
+在此使用$P(S_i, \tilde{h}_i)$的表达式和Gaussian form of $P_i(\tilde{h}_i \backslash S_i)$, 可以得到
+$$
+\langle \tilde{h}_i \rangle = \langle \tilde{h}_i \rangle_{\backslash i} + \langle V_i S_i \rangle.
+$$
+或
+$$
+\langle \tilde{h}_i \rangle_{\backslash i} = \sum_{j} J_{ij} m_j - V_i m_i.
+$$
+接下来分析variance of the local field,
+$$
+V_i = \sum_{j,k} J_{ij} J_{ik} (\langle S_j S_k \rangle_{\backslash i}  - \langle S_j \rangle_{\backslash i} \langle S_k \rangle_{\backslash i}). 
+$$
+上面式子仅在$j=k$时有贡献，这是因为clustering property in single valley(没太看懂)
+$$
+\frac1N\sum_{j,k} (\langle S_j S_k \rangle  - \langle S_j \rangle \langle S_k \rangle)^2 \to 0, \quad N\to \infty.
+$$
+以及$J_{ij}$和$J_{ik}$是independent random variables. 因此
+$$
+V_i \approx \sum_{j} J_{ij}^2 (1 - \langle S_j \rangle_{\backslash i}^2) \approx \sum_{j} J_{ij}^2 (1 - \langle S_j \rangle^2) = \sum_{j} J_{ij}^2 (1 - m_j^2).
+$$
+结合上面的结果，可以得到TAP equation.
+
+从TAP equation 和 cavity method 也可推导 RS ansatz 的equations of state. (请看原教材)
+
+### Properties of the solution
+首先对TAP equation 在spin glass transition point的行为做讨论。假设$m_i$和$h_i$都很小，可以线性化TAP equation:
+$$
+m_i = \beta\sum_{j} J_{ij} m_j + \beta h_i - \beta^2 J^2 m_i.
+$$
+对于该线性方程能通过求解symmetric matrix $\mathbf{J}$的eignvalues和eignvectors 来得到解。 为此，我们将$J_{ij}$使用其eignvectors展开:
+$$
+J_{ij} = \sum_{\lambda} J_{\lambda} \langle i | \lambda \rangle \langle \lambda | j \rangle.
+$$
+
+<details class="my-details">
+<summary> 一些符号说明</summary>
+
+这里使用了Dirac notation, 其中$|\lambda \rangle$表示eignvector(列向量，$\langle \lambda |$这个是行向量), $\langle i | \lambda \rangle$表示该eignvector 在site $i$上的分量(或理解为内积)。这里可以分解的原因在于$\mathbf{J}$是symmetric matrix，因此能被orthonormal eignvectors 完全对角化。
+</details>
+
+定义 $\lambda$-magnetization 和 $\lambda$-field:
+$$
+m_{\lambda} = \sum_{i} \langle \lambda | i \rangle m_i, \quad h_{\lambda} = \sum_{i} \langle \lambda | i \rangle h_i.
+$$
+则上述线性方程变为
+$$
+m_{\lambda} = \beta J_{\lambda} m_{\lambda} + \beta h_{\lambda} - \beta^2 J^2 m_{\lambda}.
+$$
+因此 $\lambda$-susceptibility 定义为
+$$
+\chi_{\lambda} = \frac{\partial m_{\lambda}}{\partial h_{\lambda}}\Big|_{h\to 0} = \frac{\beta}{1 - \beta J_{\lambda} + \beta^2 J^2}.
+$$
+已知random matrix $\mathbf{J}$ 的eignvalue 分布在thermodynamic limit 下服从Wigner semicircle law:
+$$
+\rho(J_{\lambda}) = \frac{\sqrt{4J^2 - J_{\lambda}^2}}{2\pi J^2} , \quad |J_{\lambda}| \le 2J.
+$$
+因此从$\chi_{\lambda}$的表达式可以看到，对应最大eignvalue $J_{\lambda} = 2J$的susceptibility 在 $T_f = J$时发散，这意味着发生了transition point 。这与前面replica method 所得到的结果是一致的。 由于是连续谱，因此在$T<T_f$时，存在无穷多个unstable modes。这对应Parisi solution 具有零特征值的marginal stability.
+
+在上一节对local magnetization $m_i^a$出现 multivalley structure 是被视为 TAP的解且使得free energy 极小化的结果。数值分析表明，TAP的解位于稳定性条件的边界上，这让人们联想到Parisi solution 的marginal stability.  然而TAP方程的解一般对应free energy的局部极小值，而非全局极小值。确实满足free energy 最小化条件的解预计只占TAP方程全部解集的一小部分，而该方程具有多达$\mathcal{O}(\text{e}^{aN}),a>0$个解。
